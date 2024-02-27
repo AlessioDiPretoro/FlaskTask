@@ -1,6 +1,6 @@
-# Flask web app Notes
+# Python Flask web app Notes
 
-Web app for storing notes for differents users
+My first Python Web App to store notes for differents users
 
 # Setup & Installation
 
