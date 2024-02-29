@@ -68,7 +68,10 @@
       <p class="">{{ note.data }}</p>
       <p class="text-muted m-0 text-end">{{ note.date }}</p>
     </div>
-    <button type="button" class="btn-close" onClick="deleteNote({{ note.id }})"></button>
+    <div class="d-flex flex-column">
+      <button type="button" class="btn-close" onClick="deleteNote({{ note.id }})"></button>
+      <button type="button" class="btn p-1 border-0" onClick="editNote({{ note.id }})">📝</button>
+    </div>
   </div>
   {% endfor%}
 </div>
@@ -84,5 +87,7 @@
     </div>
   </form>
 </div>
+
+<div class="container">{% block component1 %} {% endblock %}</div>
 
 {% endblock %}
