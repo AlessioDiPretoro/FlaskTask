@@ -1,3 +1,5 @@
 imgLinkedin
 *database.db*
 *database*
+website/__pycache__
+*.pyc

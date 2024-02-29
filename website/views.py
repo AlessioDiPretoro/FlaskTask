@@ -6,9 +6,13 @@ import json
 
 views = Blueprint('views', __name__)
 
-@views.route('/', methods=['GET', 'POST'])
-@login_required
+@views.route('/', methods=['GET'])
 def home():
+    return render_template("home.html", user=current_user)
+
+@views.route('/notes', methods=['GET', 'POST'])
+@login_required
+def notes():
     if request.method == 'POST':
         note = request.form.get('note')
         if len(note) < 1:
@@ -19,7 +23,7 @@ def home():
             db.session.commit()
             flash('Note added')
 
-    return render_template("home.html", user=current_user)
+    return render_template("notes.html", user=current_user)
 
 @views.route('/delete-note', methods=['POST'])
 def delete_note():
