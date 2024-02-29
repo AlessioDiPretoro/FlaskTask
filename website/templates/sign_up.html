@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block title %}Sign Up{% endblock %} {% block content %}
 <form method="POST">
-  <h3 align="center">Sign Up</h3>
+  <h3 class="py-2 text-center">Sign Up</h3>
   <div class="form-group">
     <label for="email">Email Address</label>
     <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" />
@@ -35,6 +35,8 @@
       placeholder="Confirm password"
     />
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="d-flex justify-content-end my-2">
+    <button type="submit" class="btn btn-dark flex-grow-1 flex-md-grow-0">Register</button>
+  </div>
 </form>
 {% endblock %}

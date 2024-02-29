@@ -26,6 +26,7 @@ def notes():
     return render_template("notes.html", user=current_user)
 
 @views.route('/delete-note', methods=['POST'])
+@login_required
 def delete_note():
     note = json.loads(request.data)
     noteId = note['noteId']

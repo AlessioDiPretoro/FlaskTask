@@ -1,5 +1,3 @@
 imgLinkedin
-*database.db*
-*database*
-website/__pycache__
+*.db
 *.pyc
