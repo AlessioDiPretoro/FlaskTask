@@ -1,10 +1,65 @@
 {% extends "base.html"%} {% block title %}Notes{% endblock %} {% block content %}
-<div class="py-2 d-flex justify-content-between">
+<div class="py-2 d-flex justify-content-between row row-cols-2 row-cols-md-auto g-1">
   <h1 class="m-0">Notes</h1>
-  <form class="d-flex" role="search">
+
+  <!-- Search Form -->
+  <form class="d-flex order-last order-md-0 col-12 col-md-auto" role="search">
     <input class="form-control me-2" type="search" placeholder="Search note" aria-label="Search" />
     <button class="btn btn-dark" type="submit">Search</button>
   </form>
+
+  <!-- Button trigger modal add notes -->
+  <button
+    type="button"
+    class="btn btn-dark"
+    data-bs-toggle="modal"
+    data-bs-target="#staticBackdrop"
+  >
+    Add note
+  </button>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">New note</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form method="POST">
+            <div class="form-floating">
+              <textarea
+                name="note"
+                id="note"
+                placeholder="Leave a note here"
+                class="form-control"
+                style="height: 100px"
+              ></textarea>
+              <label for="note">New note</label>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-dark">Add Note</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="list-group" id="notes">
   {% for note in user.notes %}
@@ -17,13 +72,17 @@
   </div>
   {% endfor%}
 </div>
-<h2 class="py-2 m-0">Create new note</h2>
-<form method="POST">
-  <textarea name="note" id="note" class="form-control"></textarea>
-  <div class="text-center">
-    <br />
-    <button type="submit" class="btn btn-dark">Add Note</button>
-  </div>
-</form>
+<div class="my-2">
+  <form method="POST">
+    <div class="py-2 d-flex justify-content-between">
+      <h2 class="m-0">Create new note</h2>
+      <button type="submit" class="btn btn-dark">Add Note</button>
+    </div>
+    <textarea name="note" id="note" class="form-control"></textarea>
+    <div class="text-center">
+      <br />
+    </div>
+  </form>
+</div>
 
 {% endblock %}
