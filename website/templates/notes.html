@@ -7,7 +7,7 @@
     <button class="btn btn-dark" type="submit">Search</button>
   </form>
   <a
-    href="{{ url_for('modals.new_note_modal') }}"
+    href="{{ url_for('modals.note_modal') }}"
     class="btn btn-dark col col-sm-4 col-md-auto"
     data-bs-toggle="modal"
     data-bs-target="#noteModal"
@@ -25,22 +25,16 @@
     </div>
     <div class="d-flex flex-column">
       <button type="button" class="btn-close" onClick="deleteNote({{ note.id }})"></button>
-      <button type="button" class="btn p-1 border-0" onClick="editNote({{ note.id }})">📝</button>
+      <!-- <button type="button" class="btn p-1 border-0" onClick="editNote({{ note.id }})">📝</button> -->
+      <a
+        href="{{ url_for('modals.note_modal', id= note.id) }}"
+        class="btn p-1 border-0"
+        data-bs-toggle="modal"
+        data-bs-target="#noteModal"
+        >📝</a
+      >
     </div>
   </div>
   {% endfor%}
 </div>
-<!-- <div class="my-2">
-  <form method="POST">
-    <div class="py-2 d-flex justify-content-between">
-      <h2 class="m-0">Create new note</h2>
-      <button type="submit" class="btn btn-dark">Add Note</button>
-    </div>
-    <textarea name="note" id="note" class="form-control"></textarea>
-    <div class="text-center">
-      <br />
-    </div>
-  </form>
-</div> -->
-
-{% include "modals/new_note_modal.html" %} {% endblock %}
+{% include "modals/note_modal.html" %} {% endblock %}
