@@ -6,62 +6,19 @@
     <input class="form-control me-2" type="search" placeholder="Search note" aria-label="Search" />
     <button class="btn btn-dark" type="submit">Search</button>
   </form>
-  <!-- Button trigger modal add notes -->
-  <button
-    type="button"
+  <a
+    href="{{ url_for('modals.new_note_modal') }}"
     class="btn btn-dark col col-sm-4 col-md-auto"
     data-bs-toggle="modal"
-    data-bs-target="#staticBackdrop"
+    data-bs-target="#noteModal"
+    >Add note</a
   >
-    Add note
-  </button>
-
-  <!-- Modal -->
-  <div
-    class="modal fade"
-    id="staticBackdrop"
-    data-bs-backdrop="static"
-    data-bs-keyboard="false"
-    tabindex="-1"
-    aria-labelledby="staticBackdropLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">New note</h1>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
-          <form method="POST">
-            <div class="form-floating">
-              <textarea
-                name="note"
-                id="note"
-                placeholder="Leave a note here"
-                class="form-control"
-                style="height: 100px"
-              ></textarea>
-              <label for="note">New note</label>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-dark">Add Note</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
+
 <div class="list-group" id="notes">
-  {% for note in user.notes %}
-  <div class="list-group-item d-flex justify-content-between align-items-center">
+  {% set orderedNotes = user.notes|sort(attribute='date', reverse=true) %} {% for note in
+  orderedNotes %}
+  <div class="list-group-item d-flex justify-content-between align-items-center mb-2">
     <div class="flex-grow-1 pe-3">
       <p class="">{{ note.data }}</p>
       <p class="text-muted m-0 text-end">{{ note.date }}</p>
@@ -73,7 +30,7 @@
   </div>
   {% endfor%}
 </div>
-<div class="my-2">
+<!-- <div class="my-2">
   <form method="POST">
     <div class="py-2 d-flex justify-content-between">
       <h2 class="m-0">Create new note</h2>
@@ -84,8 +41,6 @@
       <br />
     </div>
   </form>
-</div>
+</div> -->
 
-<div class="container">{% block component1 %} {% endblock %}</div>
-
-{% endblock %}
+{% include "modals/new_note_modal.html" %} {% endblock %}

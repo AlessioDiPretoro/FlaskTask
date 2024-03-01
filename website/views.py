@@ -22,7 +22,6 @@ def notes():
             db.session.add(new_note)
             db.session.commit()
             flash('Note added')
-
     return render_template("notes.html", user=current_user)
 
 @views.route('/delete-note', methods=['POST'])
