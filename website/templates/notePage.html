@@ -1,0 +1,25 @@
+{% extends "base.html"%} {% block title %}Notes{% endblock %} {% block content %}
+
+<h1 class="modal-title fs-5" id="noteModalLabel">
+  {% if note %}Edit note {% else %}New note{% endif %}
+</h1>
+<form method="POST">
+  <div class="form-floating">
+    <textarea
+      name="note"
+      id="note"
+      placeholder="Leave a note here"
+      class="form-control"
+      style="height: 100px"
+    >
+{% if note %}{{note.data}}{% endif %}</textarea
+    >
+    <label for="note">New note</label>
+  </div>
+  <div class="">
+    <button type="submit" class="btn btn-dark">
+      {% if note %}Save note {% else %}Add Note{% endif %}
+    </button>
+  </div>
+</form>
+{% endblock %}

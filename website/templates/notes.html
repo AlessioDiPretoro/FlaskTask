@@ -11,6 +11,9 @@
     class="btn btn-dark col col-sm-4 col-md-auto"
     data-bs-toggle="modal"
     data-bs-target="#noteModal"
+    >Add note modal</a
+  >
+  <a href="{{ url_for('noteManager.notePage') }}" class="btn btn-dark col col-sm-4 col-md-auto"
     >Add note</a
   >
 </div>
@@ -26,13 +29,7 @@
     <div class="d-flex flex-column">
       <button type="button" class="btn-close" onClick="deleteNote({{ note.id }})"></button>
       <!-- <button type="button" class="btn p-1 border-0" onClick="editNote({{ note.id }})">📝</button> -->
-      <a
-        href="{{ url_for('modals.note_modal', id= note.id) }}"
-        class="btn p-1 border-0"
-        data-bs-toggle="modal"
-        data-bs-target="#noteModal"
-        >📝</a
-      >
+      <a href="{{ url_for('noteManager.notePage', id= note.id) }}" class="btn p-1 border-0">📝</a>
     </div>
   </div>
   {% endfor%}
